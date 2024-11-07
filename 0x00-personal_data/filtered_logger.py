@@ -3,8 +3,11 @@
 import re
 
 
+patterns = {
+    'extract': lambda x, y: r'(?P<field>{})=[^{}]*'.format('|'.join(x), y),
+    'replace': lambda x: r'\g<field>={}'.format(x),
+}
 def filter_datum(fields, redaction, message, separator):
     '''function called filter_datum that returns the log message'''
-    return re.sub(
-            fr'({"|".join(fields)})=[^{separator}]*', fr'\1={redaction}',
-            message)
+    extract, replace = (patterns["extract"], patterns["replace"])
+    return re.sub(extract(fields, separator), replace(redaction), message)
