@@ -9,7 +9,8 @@ patterns = {
 
 
 def filter_datum(
-        fields: List[str], redaction: str, message: str, separator: str) -> str:
+        fields: List[str], redaction: str, message: str,
+        separator: str) -> str:
     '''function called filter_datum that returns the log message'''
     extract, replace = (patterns["extract"], patterns["replace"])
     return re.sub(extract(fields, separator), replace(redaction), message)
