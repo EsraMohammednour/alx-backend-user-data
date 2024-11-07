@@ -23,6 +23,7 @@ class RedactingFormatter(logging.Formatter):
         txt = filter_datum(self.fields, self.REDACTION, msg, self.SEPARATOR)
         return txt
 
+
 patterns = {
     'extract': lambda x, y: r'(?P<field>{})=[^{}]*'.format('|'.join(x), y),
     'replace': lambda x: r'\g<field>={}'.format(x),
