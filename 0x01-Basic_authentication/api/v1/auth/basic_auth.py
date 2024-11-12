@@ -1,6 +1,6 @@
-#!/bin/usr/env python3
+#!/usr/env python3
 '''module for crating new class'''
-from api.v1.auth.auth import Auth
+from .auth import Auth
 
 
 class BasicAuth(Auth):
