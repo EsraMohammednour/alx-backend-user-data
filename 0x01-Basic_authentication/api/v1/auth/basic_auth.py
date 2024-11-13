@@ -2,6 +2,8 @@
 '''module for crating new class'''
 from .auth import Auth
 import re
+import binascii
+import base64
 
 
 class BasicAuth(Auth):
@@ -15,3 +17,15 @@ class BasicAuth(Auth):
             if field_match is not None:
                 return field_match.group('token')
         return None
+
+    def decode_base64_authorization_header(self,
+                                            base64_authorization_header: str) -> str:
+        '''decode base64 authorization header'''
+        if isinstance(base64_authorization_header, str):
+            try:
+                decoded_bytes = base64.b64decode(
+                                base64_authorization_header, validate=True)
+                return decoded_bytes.decode('utf-8')
+
+            except (binascii.Error, UnicodeDecodeError):
+                return None
