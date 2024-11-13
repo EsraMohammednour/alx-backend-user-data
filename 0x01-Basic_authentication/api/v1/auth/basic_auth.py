@@ -7,7 +7,7 @@ import re
 class BasicAuth(Auth):
     '''creating empty class'''
     def extract_base64_authorization_header(self,
-    authorization_header: str) -> str:
+                                            authorization_header: str) -> str:
         '''return Base64 authorization header'''
         if isinstance(authorization_header, str):
             pattern = r'Basic (?P<token>.+)'
