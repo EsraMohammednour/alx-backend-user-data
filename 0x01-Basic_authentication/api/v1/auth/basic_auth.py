@@ -36,6 +36,7 @@ class BasicAuth(Auth):
                                 self,
                                 decoded_base64_authorization_header:
                                 str) -> (str, str):
+        '''Basic - User credentials'''
         if decoded_base64_authorization_header is None:
             return None, None
         elif not isinstance(decoded_base64_authorization_header, str):
