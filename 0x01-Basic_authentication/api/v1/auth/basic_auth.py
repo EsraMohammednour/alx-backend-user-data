@@ -18,8 +18,10 @@ class BasicAuth(Auth):
                 return field_match.group('token')
         return None
 
-    def decode_base64_authorization_header(self,
-                                            base64_authorization_header: str) -> str:
+    def decode_base64_authorization_header(
+                                            self,
+                                            base64_authorization_header:
+                                            str) -> str:
         '''decode base64 authorization header'''
         if isinstance(base64_authorization_header, str):
             try:
